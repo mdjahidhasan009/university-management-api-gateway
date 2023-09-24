@@ -1,4 +1,4 @@
-import axios, {AxiosInstance} from "axios";
+import axios, { AxiosInstance } from "axios";
 import config from "../config";
 
 const HttpService = (baseUrl: string): AxiosInstance => {
@@ -6,25 +6,25 @@ const HttpService = (baseUrl: string): AxiosInstance => {
     baseURL: baseUrl,
     timeout: 10000,
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     }
   });
 
   instance.interceptors.request.use(
     (config) => {
-      return config;
+      return config
     },
     (error) => {
-      return error;
+      return error
     }
   );
 
   instance.interceptors.response.use(
     (response) => {
-      return response.data;
+      return response.data
     },
     (error) => {
-      return error;
+      return Promise.reject(error)
     }
   );
 
@@ -34,8 +34,4 @@ const HttpService = (baseUrl: string): AxiosInstance => {
 const AuthService = HttpService(config.authServiceUrl);
 const CoreService = HttpService(config.coreServiceUrl);
 
-export {
-  HttpService,
-  AuthService,
-  CoreService
-}
+export { HttpService, AuthService, CoreService }
