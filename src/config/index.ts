@@ -29,7 +29,8 @@ export default {
         secret: envVars.JWT_SECRET
     },
     redis: {
-        url: envVars.REDIS_URL
+        url: envVars.REDIS_URL,
+        expires_in: 60 * 60 * 24 * 30 // 30 days
     },
     authServiceUrl: envVars.AUTH_SERVICE_URL,
     coreServiceUrl: envVars.CORE_SERVICE_URL,

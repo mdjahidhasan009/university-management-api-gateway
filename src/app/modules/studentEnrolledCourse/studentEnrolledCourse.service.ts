@@ -1,7 +1,7 @@
 
 import { Request } from 'express';
 import { IGenericResponse } from '../../../interfaces/common';
-import { CoreHttpService } from '../../../shared/axios';
+import { CoreService as CoreHttpService } from '../../../shared/axios';
 
 const getAllFromDB = async (req: Request): Promise<IGenericResponse> => {
   const response: IGenericResponse = await CoreHttpService.get('/student-enrolled-courses', {
