@@ -1,0 +1,26 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.semesterRegistrationRoutes = void 0;
+const express_1 = __importDefault(require("express"));
+const user_1 = require("../../../enums/user");
+const validateRequest_1 = __importDefault(require("../../middlewares/validateRequest"));
+const auth_1 = __importDefault(require("../../middlewares/auth"));
+const semesterRegistration_controller_1 = require("./semesterRegistration.controller");
+const semesterRegistration_validation_1 = require("./semesterRegistration.validation");
+const router = express_1.default.Router();
+router.get('/', semesterRegistration_controller_1.SemesterRegistrationController.getAllFromDB);
+router.get('/my-registration', (0, auth_1.default)(user_1.ENUM_USER_ROLE.STUDENT), semesterRegistration_controller_1.SemesterRegistrationController.getMyRegistration);
+router.get('/my-semester-registration-courses', (0, auth_1.default)(user_1.ENUM_USER_ROLE.STUDENT), semesterRegistration_controller_1.SemesterRegistrationController.mySemesterRegistrationCourses);
+router.get('/:id', semesterRegistration_controller_1.SemesterRegistrationController.getByIdFromDB);
+router.post('/', (0, validateRequest_1.default)(semesterRegistration_validation_1.SemesterRegistrationValidation.create), (0, auth_1.default)(user_1.ENUM_USER_ROLE.SUPER_ADMIN, user_1.ENUM_USER_ROLE.ADMIN), semesterRegistration_controller_1.SemesterRegistrationController.insertIntoDB);
+router.post('/enroll-into-course', (0, validateRequest_1.default)(semesterRegistration_validation_1.SemesterRegistrationValidation.enrollIntoCourse), (0, auth_1.default)(user_1.ENUM_USER_ROLE.STUDENT), semesterRegistration_controller_1.SemesterRegistrationController.enrollIntoCourse);
+router.post('/withdraw-from-course', (0, validateRequest_1.default)(semesterRegistration_validation_1.SemesterRegistrationValidation.withdrawFromCourse), (0, auth_1.default)(user_1.ENUM_USER_ROLE.STUDENT), semesterRegistration_controller_1.SemesterRegistrationController.withDrawFromCourse);
+router.post('/confirm-registration', (0, auth_1.default)(user_1.ENUM_USER_ROLE.STUDENT), semesterRegistration_controller_1.SemesterRegistrationController.confirmRegistration);
+router.post('/start-registration', (0, auth_1.default)(user_1.ENUM_USER_ROLE.STUDENT), semesterRegistration_controller_1.SemesterRegistrationController.startRegistration);
+router.post('/:id/start-new-semester', (0, auth_1.default)(user_1.ENUM_USER_ROLE.SUPER_ADMIN, user_1.ENUM_USER_ROLE.ADMIN), semesterRegistration_controller_1.SemesterRegistrationController.startNewSemester);
+router.patch('/:id', (0, validateRequest_1.default)(semesterRegistration_validation_1.SemesterRegistrationValidation.update), (0, auth_1.default)(user_1.ENUM_USER_ROLE.SUPER_ADMIN, user_1.ENUM_USER_ROLE.ADMIN), semesterRegistration_controller_1.SemesterRegistrationController.updateOneInDB);
+router.delete('/:id', (0, auth_1.default)(user_1.ENUM_USER_ROLE.SUPER_ADMIN, user_1.ENUM_USER_ROLE.ADMIN), semesterRegistration_controller_1.SemesterRegistrationController.deleteByIdFromDB);
+exports.semesterRegistrationRoutes = router;

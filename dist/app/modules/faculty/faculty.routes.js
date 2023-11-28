@@ -1,0 +1,21 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.facultyRoutes = void 0;
+const express_1 = __importDefault(require("express"));
+const auth_1 = __importDefault(require("../../middlewares/auth"));
+const user_1 = require("../../../enums/user");
+const faculty_controller_1 = require("./faculty.controller");
+const validateRequest_1 = __importDefault(require("../../middlewares/validateRequest"));
+const faculty_validations_1 = require("./faculty.validations");
+const router = express_1.default.Router();
+router.get('/', faculty_controller_1.FacultyController.getAllFromDB);
+router.get('/profile/:id', faculty_controller_1.FacultyController.getFacultyProfile);
+router.get('/my-courses', (0, auth_1.default)(user_1.ENUM_USER_ROLE.FACULTY), faculty_controller_1.FacultyController.getMyCourses);
+router.get('/my-course-students', (0, auth_1.default)(user_1.ENUM_USER_ROLE.FACULTY), faculty_controller_1.FacultyController.getMyCourseStudents);
+router.get('/:id', faculty_controller_1.FacultyController.getByIdFromDB);
+router.patch('/:id', (0, validateRequest_1.default)(faculty_validations_1.FacultyValidation.updateFaculty), (0, auth_1.default)(user_1.ENUM_USER_ROLE.SUPER_ADMIN, user_1.ENUM_USER_ROLE.ADMIN), faculty_controller_1.FacultyController.updateOneInDB);
+router.delete('/:id', (0, auth_1.default)(user_1.ENUM_USER_ROLE.SUPER_ADMIN, user_1.ENUM_USER_ROLE.ADMIN), faculty_controller_1.FacultyController.deleteByIdFromDB);
+exports.facultyRoutes = router;
