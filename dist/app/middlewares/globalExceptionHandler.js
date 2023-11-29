@@ -8,6 +8,7 @@ const zod_1 = require("zod");
 const config_1 = __importDefault(require("../../config"));
 const apiError_1 = __importDefault(require("../../errors/apiError"));
 const handleZodError_1 = __importDefault(require("../../errors/handleZodError"));
+// import logger from '../../shared/logger';
 const globalExceptionHandler = (error, req, res, next) => {
     var _a, _b, _c, _d, _e;
     let errorMessages = [];
