@@ -10,14 +10,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserService = void 0;
-const FileUploadHelper_1 = require("../../../helpers/FileUploadHelper");
 const axios_1 = require("../../../shared/axios");
 const createStudent = (req) => __awaiter(void 0, void 0, void 0, function* () {
-    const file = req.file;
-    const uploadedImage = yield FileUploadHelper_1.FileUploadHelper.uploadToCloudinary(file);
-    if (uploadedImage) {
-        req.body.profileImage = uploadedImage.secure_url;
-    }
+    // const file = req.file as IUploadFile;
+    // const uploadedImage = await FileUploadHelper.uploadToCloudinary(file);
+    // if (uploadedImage) {
+    //   req.body.profileImage = uploadedImage.secure_url
+    // }
+    req.body.profileImage = "https://images.unsplash.com/photo-1675546529290-a2147e6e5cd5?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
     const { academicDepartment, academicFaculty, academicSemester } = req.body.student;
     const academicDepartmentResponse = yield axios_1.AuthService.get(`/academic-departments?syncId=${academicDepartment}`);
     if (academicDepartmentResponse.data && Array.isArray(academicDepartmentResponse.data)) {
@@ -39,11 +39,12 @@ const createStudent = (req) => __awaiter(void 0, void 0, void 0, function* () {
     return response;
 });
 const createFaculty = (req) => __awaiter(void 0, void 0, void 0, function* () {
-    const file = req.file;
-    const uploadedProfileImage = yield FileUploadHelper_1.FileUploadHelper.uploadToCloudinary(file);
-    if (uploadedProfileImage) {
-        req.body.faculty.profileImage = uploadedProfileImage.secure_url;
-    }
+    // const file = req.file as IUploadFile;
+    // const uploadedProfileImage = await FileUploadHelper.uploadToCloudinary(file);
+    // if (uploadedProfileImage) {
+    //   req.body.faculty.profileImage = uploadedProfileImage.secure_url;
+    // }
+    req.body.faculty.profileImage = "https://images.unsplash.com/photo-1675546529290-a2147e6e5cd5?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
     const { academicDepartment, academicFaculty } = req.body.faculty;
     const academicDepartmentResponse = yield axios_1.AuthService.get(`/academic-departments?syncId=${academicDepartment}`);
     if (academicDepartmentResponse.data && Array.isArray(academicDepartmentResponse.data)) {
@@ -61,11 +62,12 @@ const createFaculty = (req) => __awaiter(void 0, void 0, void 0, function* () {
     return response;
 });
 const createAdmin = (req) => __awaiter(void 0, void 0, void 0, function* () {
-    const file = req.file;
-    const uploadedProfileImage = yield FileUploadHelper_1.FileUploadHelper.uploadToCloudinary(file);
-    if (uploadedProfileImage) {
-        req.body.admin.profileImage = uploadedProfileImage.secure_url;
-    }
+    // const file = req.file as IUploadFile;
+    // const uploadedProfileImage = await FileUploadHelper.uploadToCloudinary(file);
+    // if (uploadedProfileImage) {
+    //   req.body.admin.profileImage = uploadedProfileImage.secure_url;
+    // }
+    req.body.admin.profileImage = "https://images.unsplash.com/photo-1675546529290-a2147e6e5cd5?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
     const response = yield axios_1.AuthService.post('/users/create-admin', req.body, {
         headers: {
             Authorization: req.headers.authorization
