@@ -4,11 +4,21 @@ import express, { Application } from 'express';
 import httpStatus from 'http-status';
 import globalExceptionHandler from './app/middlewares/globalExceptionHandler';
 import routes from './app/routes';
+import config from "./config";
 
 const app: Application = express();
 
 
-app.use(cors({ origin: 'http://localhost:8080', credentials: true }));
+app.use(cors({
+  origin: (origin, callback) => {
+    if (config.cors.includes(<string>origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
