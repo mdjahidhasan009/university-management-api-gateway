@@ -3,7 +3,6 @@ import { IGenericResponse } from '../../../interfaces/common';
 import { CoreService } from '../../../shared/axios';
 
 const getAllFromDB = async (req: Request): Promise<IGenericResponse> => {
-  console.log(req);
   const response: IGenericResponse = await CoreService.get('/buildings', {
     params: req.query,
     headers: {

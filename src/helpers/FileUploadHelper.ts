@@ -49,6 +49,8 @@ const uploadToCloudinary = async (file: Express.Multer.File): Promise<ICloudinar
   return new Promise((resolve, reject) => {
     const uploadStream = cloudinary.uploader.upload_stream(
       { resource_type: 'auto' },
+
+      ////TODO: have to remove this by solving the issue of types
       // @ts-ignore
       (error: Error, result: ICloudinaryResponse) => {
         if (error) {

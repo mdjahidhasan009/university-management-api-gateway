@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.OfferedCourseService = void 0;
 const axios_1 = require("../../../shared/axios");
 const getAllFromDB = (req) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(req);
     const response = yield axios_1.CoreService.get('/offered-courses', {
         params: req.query,
         headers: {

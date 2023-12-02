@@ -14,6 +14,7 @@ const FileUploadHelper_1 = require("../../../helpers/FileUploadHelper");
 const axios_1 = require("../../../shared/axios");
 const createStudent = (req) => __awaiter(void 0, void 0, void 0, function* () {
     const file = req.file;
+    ////TODO: have to remove this by solving the issue of types
     // @ts-ignore
     const uploadedImage = yield FileUploadHelper_1.FileUploadHelper.uploadToCloudinary(file);
     if (uploadedImage) {
@@ -42,6 +43,7 @@ const createStudent = (req) => __awaiter(void 0, void 0, void 0, function* () {
 });
 const createFaculty = (req) => __awaiter(void 0, void 0, void 0, function* () {
     const file = req.file;
+    ////TODO: have to remove this by solving the issue of types
     // @ts-ignore
     const uploadedProfileImage = yield FileUploadHelper_1.FileUploadHelper.uploadToCloudinary(file);
     if (uploadedProfileImage) {
@@ -66,6 +68,7 @@ const createFaculty = (req) => __awaiter(void 0, void 0, void 0, function* () {
 });
 const createAdmin = (req) => __awaiter(void 0, void 0, void 0, function* () {
     const file = req.file;
+    ////TODO: have to remove this by solving the issue of types
     // @ts-ignore
     const uploadedProfileImage = yield FileUploadHelper_1.FileUploadHelper.uploadToCloudinary(file);
     if (uploadedProfileImage) {

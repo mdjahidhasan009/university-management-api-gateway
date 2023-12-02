@@ -7,6 +7,7 @@ import { IGenericResponse } from "../../../interfaces/common";
 const createStudent = async (req: Request) => {
   const file = req.file as IUploadFile;
 
+  ////TODO: have to remove this by solving the issue of types
   // @ts-ignore
   const uploadedImage = await FileUploadHelper.uploadToCloudinary(file);
 
@@ -47,6 +48,7 @@ const createStudent = async (req: Request) => {
 const createFaculty = async (req: Request): Promise<IGenericResponse> => {
   const file = req.file as IUploadFile;
 
+  ////TODO: have to remove this by solving the issue of types
   // @ts-ignore
   const uploadedProfileImage = await FileUploadHelper.uploadToCloudinary(file);
 
@@ -85,6 +87,7 @@ const createFaculty = async (req: Request): Promise<IGenericResponse> => {
 const createAdmin = async (req: Request): Promise<IGenericResponse> => {
   const file = req.file as IUploadFile;
 
+  ////TODO: have to remove this by solving the issue of types
   // @ts-ignore
   const uploadedProfileImage = await FileUploadHelper.uploadToCloudinary(file);
 

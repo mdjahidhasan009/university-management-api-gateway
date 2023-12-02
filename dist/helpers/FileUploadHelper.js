@@ -79,6 +79,7 @@ const upload = (0, multer_1.default)({
 const uploadToCloudinary = (file) => __awaiter(void 0, void 0, void 0, function* () {
     return new Promise((resolve, reject) => {
         const uploadStream = cloudinary_1.v2.uploader.upload_stream({ resource_type: 'auto' }, 
+        ////TODO: have to remove this by solving the issue of types
         // @ts-ignore
         (error, result) => {
             if (error) {
