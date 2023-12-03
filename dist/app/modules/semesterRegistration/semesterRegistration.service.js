@@ -56,7 +56,7 @@ const deleteByIdFromDB = (req) => __awaiter(void 0, void 0, void 0, function* ()
     return response;
 });
 const getMyRegistration = (req) => __awaiter(void 0, void 0, void 0, function* () {
-    const response = yield axios_1.CoreService.get(`/semester-registrations/my-registration`, {
+    const response = yield axios_1.CoreService.get(`/semester-registrations/get-my-registration`, {
         headers: {
             Authorization: req.headers.authorization
         }
@@ -72,7 +72,7 @@ const startRegistration = (req) => __awaiter(void 0, void 0, void 0, function* (
     return response;
 });
 const mySemesterRegistrationCourses = (req) => __awaiter(void 0, void 0, void 0, function* () {
-    const response = yield axios_1.CoreService.get(`/semester-registrations/my-semester-registration-courses`, {
+    const response = yield axios_1.CoreService.get(`/semester-registrations/get-my-semsester-courses`, {
         headers: {
             Authorization: req.headers.authorization
         }
@@ -96,7 +96,7 @@ const withDrawFromCourse = (req) => __awaiter(void 0, void 0, void 0, function* 
     return response;
 });
 const confirmRegistration = (req) => __awaiter(void 0, void 0, void 0, function* () {
-    const response = yield axios_1.CoreService.post(`/semester-registrations/confirm-registration`, req.body, {
+    const response = yield axios_1.CoreService.post(`/semester-registrations/confirm-my-registration`, req.body, {
         headers: {
             Authorization: req.headers.authorization
         }

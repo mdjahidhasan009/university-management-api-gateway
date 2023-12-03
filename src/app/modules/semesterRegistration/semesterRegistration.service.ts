@@ -61,7 +61,7 @@ const deleteByIdFromDB = async (req: Request): Promise<IGenericResponse> => {
 
 const getMyRegistration = async (req: Request): Promise<IGenericResponse> => {
   const response: IGenericResponse = await CoreService.get(
-    `/semester-registrations/my-registration`,
+    `/semester-registrations/get-my-registration`,
     {
       headers: {
         Authorization: req.headers.authorization
@@ -86,7 +86,7 @@ const startRegistration = async (req: Request): Promise<IGenericResponse> => {
 
 const mySemesterRegistrationCourses = async (req: Request): Promise<IGenericResponse> => {
   const response: IGenericResponse = await CoreService.get(
-    `/semester-registrations/my-semester-registration-courses`,
+    `/semester-registrations/get-my-semsester-courses`,
     {
       headers: {
         Authorization: req.headers.authorization
@@ -124,7 +124,7 @@ const withDrawFromCourse = async (req: Request): Promise<IGenericResponse> => {
 
 const confirmRegistration = async (req: Request): Promise<IGenericResponse> => {
   const response: IGenericResponse = await CoreService.post(
-    `/semester-registrations/confirm-registration`,
+    `/semester-registrations/confirm-my-registration`,
     req.body,
     {
       headers: {

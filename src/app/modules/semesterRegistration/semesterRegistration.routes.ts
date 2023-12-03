@@ -45,7 +45,7 @@ router.post(
 );
 
 router.post(
-  '/confirm-registration',
+  '/confirm-my-registration',
   auth(ENUM_USER_ROLE.STUDENT),
   SemesterRegistrationController.confirmRegistration
 );
