@@ -20,29 +20,11 @@ const getMyPayment = (req) => __awaiter(void 0, void 0, void 0, function* () {
     });
     return response;
 });
-const initiatePayment = (req) => __awaiter(void 0, void 0, void 0, function* () {
-    const response = yield axios_1.CoreService.post('/student-semester-payments/initiate-payment', {
-        params: req.body,
-        headers: {
-            Authorization: req.headers.authorization
-        }
-    });
-    return response;
-});
-const completePayment = (req) => __awaiter(void 0, void 0, void 0, function* () {
-    const response = yield axios_1.CoreService.post('/student-semester-payments/complete-payment', {
-        params: req.body,
-        headers: {
-            Authorization: req.headers.authorization
-        }
-    });
-    return response;
-});
 // const initiatePayment = async (req: Request): Promise<IGenericResponse> => {
 //   const response: IGenericResponse = await CoreService.post(
-//     `/student-semester-payment/initiate-payment`,
-//     req.body,
+//     '/student-semester-payments/initiate-payment',
 //     {
+//       params: req.body,
 //       headers: {
 //         Authorization: req.headers.authorization
 //       }
@@ -53,9 +35,9 @@ const completePayment = (req) => __awaiter(void 0, void 0, void 0, function* () 
 //
 // const completePayment = async (req: Request): Promise<IGenericResponse> => {
 //   const response: IGenericResponse = await CoreService.post(
-//     `/student-semester-payment/complete-payment`,
-//     req.body,
+//     '/student-semester-payments/complete-payment',
 //     {
+//       params: req.body,
 //       headers: {
 //         Authorization: req.headers.authorization
 //       }
@@ -63,6 +45,22 @@ const completePayment = (req) => __awaiter(void 0, void 0, void 0, function* () 
 //   );
 //   return response;
 // };
+const initiatePayment = (req) => __awaiter(void 0, void 0, void 0, function* () {
+    const response = yield axios_1.CoreService.post(`/student-semester-payments/initiate-payment`, req.body, {
+        headers: {
+            Authorization: req.headers.authorization
+        }
+    });
+    return response;
+});
+const completePayment = (req) => __awaiter(void 0, void 0, void 0, function* () {
+    const response = yield axios_1.CoreService.post(`/student-semester-payments/complete-payment`, req.body, {
+        headers: {
+            Authorization: req.headers.authorization
+        }
+    });
+    return response;
+});
 exports.StudentSemesterPaymentService = {
     getMyPayment,
     initiatePayment,
