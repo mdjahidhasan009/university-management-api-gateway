@@ -90,7 +90,7 @@ const moduleRoutes = [
     routes: studentEnrolledCourseMarkRoutes
   },
   {
-    path: '/student-semester-payment',
+    path: '/student-semester-payments',
     routes: studentSemesterPaymentRoutes
   },
   {

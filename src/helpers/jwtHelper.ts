@@ -8,7 +8,7 @@ const verifyToken = (token: string) => {
     const isVerified = verify(token, config.jwt.secret);
     return isVerified as any;
   } catch (error) {
-    return new ApiError(httpStatus.UNAUTHORIZED, 'Invalid token');
+    throw new ApiError(httpStatus.UNAUTHORIZED, 'Invalid token');
   }
 };
 

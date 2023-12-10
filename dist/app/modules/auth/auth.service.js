@@ -32,8 +32,26 @@ const changePassword = (req) => __awaiter(void 0, void 0, void 0, function* () {
     });
     return response;
 });
+const forgotPassword = (req) => __awaiter(void 0, void 0, void 0, function* () {
+    const response = yield axios_1.AuthService.post('/auth/forgot-password', req.body, {
+        headers: {
+            Authorization: req.headers.authorization
+        }
+    });
+    return response;
+});
+const resetPassword = (req) => __awaiter(void 0, void 0, void 0, function* () {
+    const response = yield axios_1.AuthService.post('/auth/reset-password', req.body, {
+        headers: {
+            Authorization: req.headers.authorization
+        }
+    });
+    return response;
+});
 exports.AuthenticationService = {
     loginUser,
     refreshToken,
-    changePassword
+    changePassword,
+    forgotPassword,
+    resetPassword
 };

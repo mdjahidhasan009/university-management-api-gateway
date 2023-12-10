@@ -38,7 +38,7 @@ const updateMarks = (req) => __awaiter(void 0, void 0, void 0, function* () {
     return response;
 });
 const updateCourseFinalMarks = (req) => __awaiter(void 0, void 0, void 0, function* () {
-    const response = yield axios_1.CoreService.post(`/student-enrolled-course-marks/update-course-final-marks`, req.body, {
+    const response = yield axios_1.CoreService.post(`/student-enrolled-course-marks/update-final-marks`, req.body, {
         headers: {
             Authorization: req.headers.authorization
         }

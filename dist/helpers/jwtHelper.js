@@ -14,7 +14,7 @@ const verifyToken = (token) => {
         return isVerified;
     }
     catch (error) {
-        return new apiError_1.default(http_status_1.default.UNAUTHORIZED, 'Invalid token');
+        throw new apiError_1.default(http_status_1.default.UNAUTHORIZED, 'Invalid token');
     }
 };
 exports.JwtHelper = {

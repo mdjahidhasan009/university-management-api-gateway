@@ -31,14 +31,15 @@ const refreshToken = async (req: Request, res: Response, next: NextFunction) => 
   try {
     const result = await AuthenticationService.refreshToken(req);
 
-    const { ...others } = result.data;
+    const { refreshToken, ...others } = result.data;
 
-    // const cookieOptions = {
-    //   secure: config.env === 'production',
-    //   httpOnly: true,
-    // };
+    const cookieOptions = {
+      secure: config.env === 'production',
+      httpOnly: true,
+    };
 
-    // res.cookie('refreshToken', result.data.refreshToken, cookieOptions);
+    res.cookie('refreshToken', result.data.refreshToken, cookieOptions);
+
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,
@@ -59,10 +60,29 @@ const changePassword = async (req: Request, res: Response, next: NextFunction) =
     next(error);
   }
 }
+const forgotPassword = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const result = await AuthenticationService.forgotPassword(req);
+        sendResponse(res, result)
+    } catch (error) {
+        next(error);
+    }
+}
+
+const resetPassword = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const result = await AuthenticationService.resetPassword(req);
+        sendResponse(res, result)
+    } catch (error) {
+        next(error);
+    }
+}
 
 
 export const AuthenticationController = {
   loginUser,
   refreshToken,
-  changePassword
+  changePassword,
+  forgotPassword,
+  resetPassword
 }

@@ -30,6 +30,8 @@ const getMyCourses = (req) => __awaiter(void 0, void 0, void 0, function* () {
     return response;
 });
 const getMyCourseStudents = (req) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log('my-course-students');
+    console.log(req.query);
     const response = yield axios_1.CoreService.get('/faculties/my-course-students', {
         params: req.query,
         headers: {

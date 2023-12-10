@@ -40,7 +40,8 @@ const globalExceptionHandler: ErrorRequestHandler = (
           }
         ]
       : [];
-  } else if (error instanceof Error) {
+  // } else if (error instanceof Error) {
+  } else {
     message = error?.message;
     errorMessages = error?.message
       ? [

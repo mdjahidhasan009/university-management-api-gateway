@@ -40,7 +40,7 @@ const updateMarks = async (req: Request): Promise<IGenericResponse> => {
 
 const updateCourseFinalMarks = async (req: Request): Promise<IGenericResponse> => {
   const response: IGenericResponse = await CoreService.post(
-    `/student-enrolled-course-marks/update-course-final-marks`,
+    `/student-enrolled-course-marks/update-final-marks`,
     req.body,
     {
       headers: {

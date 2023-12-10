@@ -36,8 +36,9 @@ const globalExceptionHandler = (error, req, res, next) => {
                 }
             ]
             : [];
+        // } else if (error instanceof Error) {
     }
-    else if (error instanceof Error) {
+    else {
         message = error === null || error === void 0 ? void 0 : error.message;
         errorMessages = (error === null || error === void 0 ? void 0 : error.message)
             ? [

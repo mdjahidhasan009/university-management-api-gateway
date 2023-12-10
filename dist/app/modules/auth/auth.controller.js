@@ -51,12 +51,12 @@ const loginUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function
 const refreshToken = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const result = yield auth_service_1.AuthenticationService.refreshToken(req);
-        const others = __rest(result.data, []);
-        // const cookieOptions = {
-        //   secure: config.env === 'production',
-        //   httpOnly: true,
-        // };
-        // res.cookie('refreshToken', result.data.refreshToken, cookieOptions);
+        const _b = result.data, { refreshToken } = _b, others = __rest(_b, ["refreshToken"]);
+        const cookieOptions = {
+            secure: config_1.default.env === 'production',
+            httpOnly: true,
+        };
+        res.cookie('refreshToken', result.data.refreshToken, cookieOptions);
         (0, response_1.default)(res, {
             statusCode: http_status_1.default.OK,
             success: true,
@@ -77,8 +77,28 @@ const changePassword = (req, res, next) => __awaiter(void 0, void 0, void 0, fun
         next(error);
     }
 });
+const forgotPassword = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield auth_service_1.AuthenticationService.forgotPassword(req);
+        (0, response_1.default)(res, result);
+    }
+    catch (error) {
+        next(error);
+    }
+});
+const resetPassword = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield auth_service_1.AuthenticationService.resetPassword(req);
+        (0, response_1.default)(res, result);
+    }
+    catch (error) {
+        next(error);
+    }
+});
 exports.AuthenticationController = {
     loginUser,
     refreshToken,
-    changePassword
+    changePassword,
+    forgotPassword,
+    resetPassword
 };

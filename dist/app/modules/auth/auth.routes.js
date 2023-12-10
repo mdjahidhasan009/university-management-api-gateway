@@ -13,5 +13,7 @@ const user_1 = require("../../../enums/user");
 const router = express_1.default.Router();
 router.post('/login', (0, validateRequest_1.default)(auth_validation_1.AuthValidation.loginZodSchema), auth_controller_1.AuthenticationController.loginUser);
 router.post('/refresh-token', (0, validateRequest_1.default)(auth_validation_1.AuthValidation.refreshTokenZodSchema), auth_controller_1.AuthenticationController.refreshToken);
+router.post('/forgot-password', auth_controller_1.AuthenticationController.forgotPassword);
+router.post('/reset-password', auth_controller_1.AuthenticationController.resetPassword);
 router.post('/change-password', (0, auth_1.default)(user_1.ENUM_USER_ROLE.SUPER_ADMIN, user_1.ENUM_USER_ROLE.ADMIN, user_1.ENUM_USER_ROLE.STUDENT, user_1.ENUM_USER_ROLE.FACULTY), (0, validateRequest_1.default)(auth_validation_1.AuthValidation.changePasswordZodSchema), auth_controller_1.AuthenticationController.changePassword);
 exports.authRoutes = router;
