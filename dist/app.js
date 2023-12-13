@@ -20,7 +20,9 @@ const app = (0, express_1.default)();
 //   },
 //   credentials: true
 // }));
+//allow all origins
 app.use((0, cors_1.default)({
+    origin: true,
     credentials: true
 }));
 app.use(express_1.default.urlencoded({ extended: true }));
