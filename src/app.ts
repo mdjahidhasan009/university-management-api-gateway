@@ -20,7 +20,9 @@ const app: Application = express();
 //   credentials: true
 // }));
 
-app.use(cors());
+app.use(cors({
+  credentials: true
+}));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
