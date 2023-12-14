@@ -27,10 +27,21 @@ const getByIdFromDB = async (req: Request, res: Response, next: NextFunction) =>
   }
 };
 
+const paymentSuccessResponse = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await PaymentServices.paymentSuccessResponse(req, res);
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+
+}
+
 
 
 export const PaymentController = {
   webhook,
   getAllFromDB,
-  getByIdFromDB
+  getByIdFromDB,
+  paymentSuccessResponse
 };

@@ -42,8 +42,18 @@ const getByIdFromDB = (req, res, next) => __awaiter(void 0, void 0, void 0, func
         next(error);
     }
 });
+const paymentSuccessResponse = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield payment_service_1.PaymentServices.paymentSuccessResponse(req, res);
+        (0, response_1.default)(res, result);
+    }
+    catch (error) {
+        next(error);
+    }
+});
 exports.PaymentController = {
     webhook,
     getAllFromDB,
-    getByIdFromDB
+    getByIdFromDB,
+    paymentSuccessResponse
 };

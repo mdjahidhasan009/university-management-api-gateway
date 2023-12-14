@@ -38,8 +38,22 @@ const getByIdFromDB = (req) => __awaiter(void 0, void 0, void 0, function* () {
     });
     return response;
 });
+const paymentSuccessResponse = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log('success payment');
+    console.log(req.query);
+    const response = yield axios_1.PaymentService.post('/payment/success', {
+        params: req.query,
+        headers: {
+            Authorization: req.headers.authorization
+        }
+    });
+    console.log('response');
+    console.log(response);
+    return response;
+});
 exports.PaymentServices = {
     webhook,
     getAllFromDB,
-    getByIdFromDB
+    getByIdFromDB,
+    paymentSuccessResponse
 };
