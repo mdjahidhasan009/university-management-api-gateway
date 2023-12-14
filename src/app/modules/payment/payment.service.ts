@@ -7,6 +7,7 @@ const webhook = async (req: Request): Promise<IGenericResponse> => {
     '/payment/webhook',
     {
       params: req.query,
+      body: req.body,
       headers: {
         Authorization: req.headers.authorization
       }
@@ -41,11 +42,13 @@ const getByIdFromDB = async (req: Request): Promise<IGenericResponse> => {
 
 const paymentSuccessResponse = async (req: Request, res: Response): Promise<IGenericResponse> => {
   console.log('success payment');
-  console.log(req.query);
+  console.log('req.query', req.query);
+  console.log('req.body', req.body);
   const response: IGenericResponse = await PaymentService.post(
     '/payment/success',
     {
       params: req.query,
+      body: req.body,
       headers: {
         Authorization: req.headers.authorization
       }

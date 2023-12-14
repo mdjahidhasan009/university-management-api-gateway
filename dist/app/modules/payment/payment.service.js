@@ -14,6 +14,7 @@ const axios_1 = require("../../../shared/axios");
 const webhook = (req) => __awaiter(void 0, void 0, void 0, function* () {
     const response = yield axios_1.PaymentService.post('/payment/webhook', {
         params: req.query,
+        body: req.body,
         headers: {
             Authorization: req.headers.authorization
         }
@@ -40,9 +41,11 @@ const getByIdFromDB = (req) => __awaiter(void 0, void 0, void 0, function* () {
 });
 const paymentSuccessResponse = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log('success payment');
-    console.log(req.query);
+    console.log('req.query', req.query);
+    console.log('req.body', req.body);
     const response = yield axios_1.PaymentService.post('/payment/success', {
         params: req.query,
+        body: req.body,
         headers: {
             Authorization: req.headers.authorization
         }
