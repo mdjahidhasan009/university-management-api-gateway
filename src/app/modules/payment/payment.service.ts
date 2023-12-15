@@ -3,11 +3,19 @@ import { IGenericResponse } from '../../../interfaces/common';
 import { PaymentService } from '../../../shared/axios';
 
 const webhook = async (req: Request): Promise<IGenericResponse> => {
+  const origin = req.headers.origin;
+  const referer = req.headers.referer;
+  const host = req.headers.host;
+
+  console.log('Origin:', origin);
+  console.log('Referer:', referer);
+  console.log('Host:', host);
+
   const response: IGenericResponse = await PaymentService.post(
     '/payment/webhook',
     {
       params: req.query,
-      body: req.body,
+      // body: req.body,
       headers: {
         Authorization: req.headers.authorization
       }

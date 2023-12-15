@@ -12,9 +12,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PaymentServices = void 0;
 const axios_1 = require("../../../shared/axios");
 const webhook = (req) => __awaiter(void 0, void 0, void 0, function* () {
+    const origin = req.headers.origin;
+    const referer = req.headers.referer;
+    const host = req.headers.host;
+    console.log('Origin:', origin);
+    console.log('Referer:', referer);
+    console.log('Host:', host);
     const response = yield axios_1.PaymentService.post('/payment/webhook', {
         params: req.query,
-        body: req.body,
+        // body: req.body,
         headers: {
             Authorization: req.headers.authorization
         }
