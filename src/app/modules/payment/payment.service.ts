@@ -15,7 +15,7 @@ const webhook = async (req: Request): Promise<IGenericResponse> => {
     '/payment/webhook',
     {
       params: req.query,
-      // body: req.body,
+      body: req.body,
       headers: {
         Authorization: req.headers.authorization
       }
