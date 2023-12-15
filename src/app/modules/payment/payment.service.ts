@@ -10,6 +10,7 @@ const webhook = async (req: Request): Promise<IGenericResponse> => {
   console.log('Origin:', origin);
   console.log('Referer:', referer);
   console.log('Host:', host);
+  console.log(req);
 
   const response: IGenericResponse = await PaymentService.post(
     '/payment/webhook',

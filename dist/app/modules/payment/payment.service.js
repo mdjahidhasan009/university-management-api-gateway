@@ -18,6 +18,7 @@ const webhook = (req) => __awaiter(void 0, void 0, void 0, function* () {
     console.log('Origin:', origin);
     console.log('Referer:', referer);
     console.log('Host:', host);
+    console.log(req);
     const response = yield axios_1.PaymentService.post('/payment/webhook', {
         params: req.query,
         body: req.body,
