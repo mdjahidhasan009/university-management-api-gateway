@@ -15,7 +15,7 @@ router.post(
 
 router.post(
   '/complete-payment',
-  auth(ENUM_USER_ROLE.STUDENT),
+  // auth(ENUM_USER_ROLE.STUDENT),
   StudentSemesterPaymentController.completePayment
 );
 

@@ -11,9 +11,28 @@ const globalExceptionHandler_1 = __importDefault(require("./app/middlewares/glob
 const routes_1 = __importDefault(require("./app/routes"));
 const config_1 = __importDefault(require("./config"));
 const app = (0, express_1.default)();
+app.use(express_1.default.urlencoded({ extended: true }));
+app.use(express_1.default.json());
+app.use((0, cookie_parser_1.default)());
+app.post('/api/v1/payments', (0, cors_1.default)(), (req, res) => {
+    var _a;
+    const status = (_a = req === null || req === void 0 ? void 0 : req.query) === null || _a === void 0 ? void 0 : _a.status;
+    if (status === 'success') {
+        res.redirect(`${config_1.default.frontendUrl}/payments?status=success`);
+    }
+    // else if(status === 'error') {
+    //   res.redirect(`${config.frontendUrl}/payments?status=error}`);
+    // }
+    else if (status === 'warning') {
+        res.redirect(`${config_1.default.frontendUrl}/payments?status=warning`);
+    }
+    else {
+        res.redirect(`${config_1.default.frontendUrl}/payments?status=error`);
+    }
+});
 app.use((0, cors_1.default)({
     origin: (origin, callback) => {
-        if (config_1.default.cors.includes(origin) || !origin) {
+        if (!origin || config_1.default.cors.includes(origin)) {
             callback(null, true);
         }
         else {
@@ -27,9 +46,9 @@ app.use((0, cors_1.default)({
 //   origin: true,
 //   credentials: true
 // }));
-app.use(express_1.default.urlencoded({ extended: true }));
-app.use(express_1.default.json());
-app.use((0, cookie_parser_1.default)());
+// app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
+// app.use(cookieParser());
 app.use('/api/v1', routes_1.default);
 app.get('/', (req, res) => {
     res.send("Server running successfully");

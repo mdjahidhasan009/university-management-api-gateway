@@ -23,8 +23,6 @@ const getMyCourses = async (req: Request): Promise<IGenericResponse> => {
 };
 
 const getMyCourseStudents = async (req: Request): Promise<IGenericResponse> => {
-  console.log('my-course-students')
-  console.log(req.query)
   const response: IGenericResponse = await CoreService.get('/faculties/my-course-students', {
     params: req.query,
     headers: {

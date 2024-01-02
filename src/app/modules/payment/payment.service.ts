@@ -10,7 +10,6 @@ const webhook = async (req: Request): Promise<IGenericResponse> => {
   console.log('Origin:', origin);
   console.log('Referer:', referer);
   console.log('Host:', host);
-  console.log(req);
 
   const response: IGenericResponse = await PaymentService.post(
     '/payment/webhook',
@@ -50,9 +49,6 @@ const getByIdFromDB = async (req: Request): Promise<IGenericResponse> => {
 };
 
 const paymentSuccessResponse = async (req: Request, res: Response): Promise<IGenericResponse> => {
-  console.log('success payment');
-  console.log('req.query', req.query);
-  console.log('req.body', req.body);
   const response: IGenericResponse = await PaymentService.post(
     '/payment/success',
     {
@@ -63,8 +59,6 @@ const paymentSuccessResponse = async (req: Request, res: Response): Promise<IGen
       }
     }
   );
-  console.log('response');
-  console.log(response);
   return response;
 };
 

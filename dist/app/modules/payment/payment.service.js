@@ -18,7 +18,6 @@ const webhook = (req) => __awaiter(void 0, void 0, void 0, function* () {
     console.log('Origin:', origin);
     console.log('Referer:', referer);
     console.log('Host:', host);
-    console.log(req);
     const response = yield axios_1.PaymentService.post('/payment/webhook', {
         params: req.query,
         body: req.body,
@@ -47,9 +46,6 @@ const getByIdFromDB = (req) => __awaiter(void 0, void 0, void 0, function* () {
     return response;
 });
 const paymentSuccessResponse = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log('success payment');
-    console.log('req.query', req.query);
-    console.log('req.body', req.body);
     const response = yield axios_1.PaymentService.post('/payment/success', {
         params: req.query,
         body: req.body,
@@ -57,8 +53,6 @@ const paymentSuccessResponse = (req, res) => __awaiter(void 0, void 0, void 0, f
             Authorization: req.headers.authorization
         }
     });
-    console.log('response');
-    console.log(response);
     return response;
 });
 exports.PaymentServices = {
